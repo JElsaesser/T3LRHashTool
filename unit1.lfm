@@ -1,0 +1,940 @@
+object Form1: TForm1
+  Left = 452
+  Height = 371
+  Top = 190
+  Width = 560
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'T3LR-Hashwert-Tool | Version 0.8.6.1 [20220205]'
+  ClientHeight = 351
+  ClientWidth = 560
+  DefaultMonitor = dmDesktop
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  ShowInTaskBar = stAlways
+  LCLVersion = '2.2.0.4'
+  object StringGrid1: TStringGrid
+    AnchorSideLeft.Control = Panel1
+    AnchorSideTop.Control = Panel1
+    Left = 15
+    Height = 32
+    Top = 39
+    Width = 216
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 10
+    ColCount = 3
+    FixedCols = 0
+    FixedRows = 0
+    Flat = True
+    HeaderHotZones = []
+    RowCount = 1
+    TabOrder = 17
+    Visible = False
+  end
+  object Memo1: TMemo
+    Left = 176
+    Height = 22
+    Top = 144
+    Width = 183
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 0
+    Visible = False
+    WordWrap = False
+  end
+  object Memo2: TMemo
+    Left = 136
+    Height = 22
+    Top = 144
+    Width = 183
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 1
+    Visible = False
+    WordWrap = False
+  end
+  object TabControl1: TTabControl
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 0
+    Height = 24
+    Top = 5
+    Width = 560
+    OnChange = TabControl1Change
+    TabIndex = 0
+    Tabs.Strings = (
+      'Hashwert prüfen'
+      'Hashwertdatei erstellen'
+      'Hashwert ermitteln'
+    )
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Top = 5
+    OnMouseUp = TabControl1MouseUp
+    TabOrder = 3
+  end
+  object Panel8: TPanel
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 396
+    Height = 20
+    Top = 7
+    Width = 159
+    Alignment = taRightJustify
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 7
+    BorderSpacing.Right = 5
+    BevelOuter = bvNone
+    Caption = 'Algorithmus: MD5'
+    Font.Color = clBlue
+    ParentFont = False
+    PopupMenu = PopupMenu1
+    TabOrder = 14
+    Wordwrap = True
+    OnDblClick = Panel8DblClick
+  end
+  object Memo3: TMemo
+    AnchorSideLeft.Control = Panel1
+    AnchorSideTop.Control = Panel1
+    AnchorSideRight.Control = Panel1
+    AnchorSideRight.Side = asrBottom
+    Left = 5
+    Height = 38
+    Top = 34
+    Width = 550
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 5
+    TabOrder = 7
+    Visible = False
+  end
+  object Panel1: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = TabControl1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = CheckBox1
+    Left = 0
+    Height = 288
+    Top = 29
+    Width = 560
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Bottom = 5
+    BevelOuter = bvNone
+    ClientHeight = 288
+    ClientWidth = 560
+    Color = clWhite
+    ParentColor = False
+    TabOrder = 2
+    object Label1: TLabel
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Button1
+      AnchorSideTop.Side = asrCenter
+      Left = 15
+      Height = 15
+      Top = 22
+      Width = 373
+      BorderSpacing.Left = 15
+      Caption = 'Bitte wählen Sie die Datei aus für die der Hashwert erstellt werden soll...'
+    end
+    object Label3: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideTop.Control = Edit1
+      AnchorSideTop.Side = asrBottom
+      Left = 15
+      Height = 1
+      Top = 68
+      Width = 1
+      BorderSpacing.Top = 3
+    end
+    object Label5: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideTop.Control = Edit2
+      AnchorSideTop.Side = asrBottom
+      Left = 15
+      Height = 1
+      Top = 99
+      Width = 1
+      BorderSpacing.Top = 2
+    end
+    object Button1: TButton
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 513
+      Height = 26
+      Top = 16
+      Width = 32
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 15
+      Caption = 'ok'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
+    object Edit1: TEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideTop.Control = Label1
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 15
+      Height = 20
+      Top = 45
+      Width = 530
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      AutoSelect = False
+      BorderSpacing.Top = 8
+      BorderSpacing.Right = 15
+      BorderStyle = bsNone
+      Font.Color = clBlue
+      ParentFont = False
+      TabOrder = 1
+    end
+    object Edit2: TEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideTop.Control = Label3
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Edit1
+      AnchorSideRight.Side = asrBottom
+      Left = 15
+      Height = 20
+      Top = 77
+      Width = 530
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      AutoSelect = False
+      BorderSpacing.Top = 8
+      BorderStyle = bsNone
+      Font.Color = clBlue
+      ParentFont = False
+      TabOrder = 2
+    end
+  end
+  object Edit3: TEdit
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 213
+    Height = 15
+    Top = 325
+    Width = 332
+    Alignment = taRightJustify
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 15
+    BorderSpacing.Bottom = 11
+    BorderStyle = bsNone
+    Font.Color = clSilver
+    ParentColor = True
+    ParentFont = False
+    TabOrder = 4
+    Text = '...'
+  end
+  object Panel2: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = TabControl1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = CheckBox1
+    Left = 0
+    Height = 288
+    Top = 29
+    Width = 560
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Bottom = 5
+    BevelOuter = bvNone
+    ClientHeight = 288
+    ClientWidth = 560
+    Color = clWhite
+    ParentColor = False
+    TabOrder = 5
+    object Label2: TLabel
+      AnchorSideLeft.Control = Panel2
+      AnchorSideTop.Control = Button2
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = Button2
+      Left = 15
+      Height = 15
+      Top = 22
+      Width = 488
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      BorderSpacing.Left = 15
+      BorderSpacing.Right = 10
+      Caption = 'Bitte wählen Sie die zu überprüfende Datei aus ...'
+    end
+    object Button2: TButton
+      AnchorSideRight.Control = Panel2
+      AnchorSideRight.Side = asrBottom
+      Left = 513
+      Height = 26
+      Top = 16
+      Width = 32
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 15
+      Caption = 'ok'
+      OnClick = Button2Click
+      TabOrder = 0
+    end
+    object Button3: TButton
+      AnchorSideTop.Control = Button2
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel2
+      AnchorSideRight.Side = asrBottom
+      Left = 513
+      Height = 26
+      Top = 43
+      Width = 32
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 1
+      BorderSpacing.Right = 15
+      Caption = 'ok'
+      OnClick = Button3Click
+      TabOrder = 1
+      Visible = False
+    end
+    object Memo4: TMemo
+      AnchorSideLeft.Control = Label2
+      AnchorSideTop.Control = Label2
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Button2
+      Left = 15
+      Height = 190
+      Top = 49
+      Width = 488
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 12
+      BorderSpacing.Right = 10
+      BorderStyle = bsNone
+      TabOrder = 2
+    end
+  end
+  object Panel3: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = TabControl1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = CheckBox1
+    Left = 0
+    Height = 288
+    Top = 29
+    Width = 560
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Bottom = 5
+    BevelOuter = bvNone
+    ClientHeight = 288
+    ClientWidth = 560
+    Color = clWhite
+    ParentColor = False
+    TabOrder = 6
+    object Button4: TButton
+      AnchorSideRight.Control = Panel3
+      AnchorSideRight.Side = asrBottom
+      Left = 513
+      Height = 26
+      Top = 16
+      Width = 32
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 15
+      Caption = 'ok'
+      OnClick = Button4Click
+      TabOrder = 0
+    end
+    object Label6: TLabel
+      AnchorSideLeft.Control = Panel3
+      AnchorSideTop.Control = Button4
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = Button4
+      Left = 15
+      Height = 15
+      Top = 22
+      Width = 488
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      BorderSpacing.Left = 15
+      BorderSpacing.Right = 10
+      Caption = 'Bitte wählen Sie die Datei aus für die der Hashwert ermittelt werden soll....'
+    end
+    object Edit4: TEdit
+      AnchorSideLeft.Control = Label4
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideRight.Control = Button4
+      Left = 80
+      Height = 15
+      Top = 56
+      Width = 423
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 5
+      BorderSpacing.Right = 10
+      BorderStyle = bsNone
+      Font.Color = clBlue
+      ParentColor = True
+      ParentFont = False
+      TabOrder = 1
+    end
+    object Label4: TLabel
+      AnchorSideLeft.Control = Label6
+      AnchorSideTop.Control = Edit4
+      AnchorSideTop.Side = asrCenter
+      Left = 15
+      Height = 15
+      Top = 56
+      Width = 60
+      Caption = 'Hash-Wert:'
+      Font.Color = clWhite
+      ParentFont = False
+    end
+    object Label9: TLabel
+      AnchorSideLeft.Control = Label6
+      AnchorSideTop.Control = Edit6
+      AnchorSideTop.Side = asrCenter
+      Left = 15
+      Height = 15
+      Top = 76
+      Width = 72
+      Caption = 'Algorithmus: '
+      Font.Color = clWhite
+      ParentFont = False
+    end
+    object Edit6: TEdit
+      AnchorSideLeft.Control = Label9
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Label4
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Button4
+      Left = 92
+      Height = 15
+      Top = 76
+      Width = 411
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 5
+      BorderSpacing.Top = 5
+      BorderSpacing.Right = 10
+      BorderStyle = bsNone
+      Font.Color = clBlue
+      ParentColor = True
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 2
+    end
+    object Label11: TLabel
+      AnchorSideLeft.Control = Label6
+      AnchorSideTop.Control = Edit7
+      AnchorSideTop.Side = asrCenter
+      Left = 15
+      Height = 15
+      Top = 96
+      Width = 69
+      Caption = 'Zeichenzahl: '
+      Font.Color = clWhite
+      ParentFont = False
+    end
+    object Edit7: TEdit
+      AnchorSideLeft.Control = Label11
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Label9
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Button4
+      Left = 89
+      Height = 15
+      Top = 96
+      Width = 414
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 5
+      BorderSpacing.Top = 5
+      BorderSpacing.Right = 10
+      BorderStyle = bsNone
+      Font.Color = clBlue
+      ParentColor = True
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 3
+    end
+    object Label12: TLabel
+      AnchorSideLeft.Control = Edit4
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Edit4
+      AnchorSideTop.Side = asrCenter
+      Left = 513
+      Height = 15
+      Top = 56
+      Width = 15
+      Caption = '. . .'
+      Font.Color = clBlue
+      ParentFont = False
+    end
+  end
+  object Edit5: TEdit
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Edit3
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = CheckBox1
+    Left = 15
+    Height = 15
+    Top = 287
+    Width = 530
+    Anchors = [akLeft, akRight, akBottom]
+    BorderSpacing.Left = 15
+    BorderSpacing.Right = 15
+    BorderSpacing.Bottom = 20
+    BorderStyle = bsNone
+    Font.Color = clMedGray
+    ParentFont = False
+    TabOrder = 8
+  end
+  object CheckBox1: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Edit3
+    AnchorSideTop.Side = asrCenter
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 15
+    Height = 19
+    Top = 322
+    Width = 83
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 15
+    BorderSpacing.Bottom = 10
+    Caption = 'Inside-Hash'
+    Checked = True
+    State = cbChecked
+    TabOrder = 9
+  end
+  object Image1: TImage
+    AnchorSideLeft.Control = Panel1
+    AnchorSideTop.Control = Panel1
+    Left = 0
+    Height = 36
+    Top = 29
+    Width = 66
+    AutoSize = True
+    Visible = False
+  end
+  object Panel4: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 33
+    Top = 318
+    Width = 560
+    Anchors = [akLeft, akRight, akBottom]
+    BevelOuter = bvNone
+    ClientHeight = 33
+    ClientWidth = 560
+    TabOrder = 10
+    Visible = False
+    object Label8: TLabel
+      AnchorSideLeft.Control = Panel4
+      AnchorSideTop.Control = Panel4
+      AnchorSideTop.Side = asrCenter
+      Left = 15
+      Height = 15
+      Top = 9
+      Width = 181
+      BorderSpacing.Left = 15
+      BorderSpacing.Top = 5
+      Caption = 'Screenshot - Hash-Wertprüfung ...'
+    end
+  end
+  object Panel6: TPanel
+    AnchorSideTop.Control = Panel5
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Panel4
+    Left = 508
+    Height = 286
+    Top = 32
+    Width = 52
+    Anchors = [akTop, akRight, akBottom]
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentColor = False
+    TabOrder = 12
+    Visible = False
+  end
+  object Panel7: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = TabControl1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = CheckBox1
+    Left = 458
+    Height = 288
+    Top = 29
+    Width = 102
+    Anchors = [akTop, akRight, akBottom]
+    BorderSpacing.Bottom = 5
+    BevelOuter = bvNone
+    ClientHeight = 288
+    ClientWidth = 102
+    ParentColor = False
+    TabOrder = 13
+    Visible = False
+    object ScrollBox1: TScrollBox
+      AnchorSideLeft.Control = Panel7
+      AnchorSideTop.Control = Panel7
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel7
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 285
+      Top = 2
+      Width = 288
+      HorzScrollBar.Page = 1
+      HorzScrollBar.Visible = False
+      VertScrollBar.Page = 285
+      Anchors = [akTop, akLeft, akBottom]
+      BorderSpacing.Top = 2
+      BorderSpacing.Bottom = 1
+      BorderStyle = bsNone
+      ClientHeight = 285
+      ClientWidth = 271
+      TabOrder = 0
+      object ListBox1: TListBox
+        AnchorSideLeft.Control = ScrollBox1
+        Left = 5
+        Height = 500
+        Top = 8
+        Width = 96
+        BorderSpacing.Left = 5
+        BorderStyle = bsNone
+        ItemHeight = 0
+        OnClick = ListBox1Click
+        OnMouseLeave = ListBox1MouseLeave
+        ParentColor = True
+        TabOrder = 0
+      end
+    end
+  end
+  object Panel5: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 32
+    Top = 0
+    Width = 560
+    Anchors = [akTop, akLeft, akRight]
+    BevelOuter = bvNone
+    ClientHeight = 32
+    ClientWidth = 560
+    TabOrder = 11
+    Visible = False
+    object Label7: TLabel
+      AnchorSideLeft.Control = Panel5
+      AnchorSideTop.Control = Panel5
+      AnchorSideTop.Side = asrCenter
+      Left = 15
+      Height = 15
+      Top = 9
+      Width = 192
+      BorderSpacing.Left = 15
+      BorderSpacing.Top = 5
+      Caption = 'Screenshot - Hash-Wertprüfung ...'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object Panel9: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 351
+    Top = 0
+    Width = 560
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'Panel9'
+    ClientHeight = 351
+    ClientWidth = 560
+    Color = clNone
+    ParentColor = False
+    TabOrder = 15
+    Visible = False
+    object Memo5: TMemo
+      AnchorSideLeft.Control = Panel9
+      AnchorSideRight.Control = Panel9
+      AnchorSideRight.Side = asrBottom
+      Left = 11
+      Height = 266
+      Top = 24
+      Width = 548
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 10
+      BorderStyle = bsNone
+      ReadOnly = True
+      ScrollBars = ssAutoVertical
+      TabOrder = 0
+    end
+    object Label10: TLabel
+      AnchorSideLeft.Control = Panel9
+      Left = 11
+      Height = 15
+      Top = 5
+      Width = 174
+      BorderSpacing.Left = 10
+      Caption = 'GNU GENERAL PUBLIC LICENSE'
+      Font.Color = clBlue
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Button6: TButton
+      AnchorSideLeft.Control = Panel9
+      AnchorSideTop.Control = Memo5
+      AnchorSideTop.Side = asrBottom
+      Left = 11
+      Height = 24
+      Top = 315
+      Width = 69
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 25
+      Caption = 'Schließen'
+      OnClick = Button6Click
+      TabOrder = 1
+    end
+  end
+  object Panel10: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = TabControl1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = CheckBox1
+    Left = 0
+    Height = 286
+    Top = 30
+    Width = 10
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Top = 1
+    BorderSpacing.Bottom = 6
+    BevelOuter = bvNone
+    ClientHeight = 286
+    ClientWidth = 10
+    ParentColor = False
+    TabOrder = 16
+    object ShellTreeView1: TShellTreeView
+      AnchorSideLeft.Control = Panel10
+      AnchorSideTop.Control = Label13
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel10
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Splitter1
+      Left = 10
+      Height = 100
+      Top = 25
+      Width = 0
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 5
+      BorderSpacing.Right = 10
+      FileSortType = fstNone
+      TabOrder = 0
+      ObjectTypes = [otFolders]
+      ShellListView = ShellListView1
+    end
+    object ShellListView1: TShellListView
+      AnchorSideLeft.Control = Panel10
+      AnchorSideTop.Control = Splitter1
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel10
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel10
+      AnchorSideBottom.Side = asrBottom
+      Left = 10
+      Height = 151
+      Hint = 'Für Datei-Aktionsauswahl doppelt klicken'
+      Top = 135
+      Width = 0
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Left = 10
+      BorderSpacing.Right = 10
+      Color = clDefault
+      ParentShowHint = False
+      ReadOnly = True
+      ShowHint = True
+      TabOrder = 1
+      OnDblClick = ShellListView1DblClick
+      ObjectTypes = [otNonFolders]
+      ShellTreeView = ShellTreeView1
+    end
+    object Label13: TLabel
+      AnchorSideLeft.Control = Panel10
+      AnchorSideTop.Control = Panel10
+      Left = 10
+      Height = 15
+      Top = 5
+      Width = 73
+      BorderSpacing.Left = 10
+      BorderSpacing.Top = 5
+      Caption = 'Dateiauswahl:'
+    end
+    object Splitter1: TSplitter
+      AnchorSideLeft.Control = Panel10
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel10
+      AnchorSideRight.Side = asrBottom
+      Cursor = crVSplit
+      Left = 0
+      Height = 10
+      Top = 125
+      Width = 10
+      Align = alNone
+      Anchors = [akLeft, akRight]
+      ResizeAnchor = akTop
+      ResizeStyle = rsLine
+    end
+    object SpeedButton1: TSpeedButton
+      AnchorSideTop.Control = Panel10
+      AnchorSideRight.Control = Panel10
+      AnchorSideRight.Side = asrBottom
+      Left = -21
+      Height = 24
+      Hint = 'Externe Dateianzeige öffnen'
+      Top = 1
+      Width = 21
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 1
+      BorderSpacing.Right = 10
+      Caption = '+'
+      Flat = True
+      Font.Color = clBlue
+      Font.Height = 18
+      Layout = blGlyphTop
+      Spacing = 0
+      OnClick = SpeedButton1Click
+      ParentFont = False
+    end
+    object Panel11: TPanel
+      AnchorSideTop.Control = Panel10
+      AnchorSideRight.Control = Panel10
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel10
+      AnchorSideBottom.Side = asrBottom
+      Left = 1
+      Height = 286
+      Top = 0
+      Width = 9
+      Anchors = [akTop, akRight, akBottom]
+      BevelOuter = bvNone
+      Caption = '. . . . . .'
+      Font.Height = 18
+      ParentFont = False
+      TabOrder = 2
+      Wordwrap = True
+      OnClick = Panel11Click
+      OnMouseLeave = Panel11MouseLeave
+      OnMouseMove = Panel11MouseMove
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 288
+    Top = 257
+  end
+  object MainMenu1: TMainMenu
+    Left = 448
+    Top = 256
+    object MenuItem1: TMenuItem
+      Caption = 'Beenden'
+      Hint = 'Anwendung beenden'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'Snapshot To ClipBoard'
+      Hint = 'Snapshot in die Zwischenablage kopieren'
+      OnClick = MenuItem2Click
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'Snapshot To File'
+      Hint = 'Snapshot als Bild (*.png) speichern'
+      OnClick = MenuItem3Click
+    end
+    object MenuItem4: TMenuItem
+      Caption = 'Algorithmus'
+      Hint = 'Crypto Algorithmus auswählen'
+      OnClick = MenuItem4Click
+    end
+    object MenuItem7: TMenuItem
+      Caption = 'ExtFE'
+      Hint = 'Externen Dateibrowser öffnen'
+      OnClick = MenuItem7Click
+    end
+    object MenuItem5: TMenuItem
+      Caption = 'Lizenz'
+      Hint = 'Lizenztext anzeigen'
+      OnClick = MenuItem5Click
+    end
+    object MenuItem6: TMenuItem
+      Caption = 'Info'
+      Hint = 'Programminformationen anzeigen'
+      OnClick = MenuItem6Click
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 0
+    OnTimer = Timer1Timer
+    Left = 352
+    Top = 257
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 0
+    OnTimer = Timer2Timer
+    Left = 384
+    Top = 257
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 320
+    Top = 256
+  end
+  object Timer3: TTimer
+    Enabled = False
+    Interval = 0
+    OnTimer = Timer3Timer
+    Left = 416
+    Top = 257
+  end
+  object Timer4: TTimer
+    Enabled = False
+    Interval = 0
+    OnTimer = Timer4Timer
+    Left = 480
+    Top = 256
+  end
+  object Timer5: TTimer
+    Enabled = False
+    Interval = 0
+    OnTimer = Timer5Timer
+    Left = 512
+    Top = 257
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 548
+    Top = 258
+    object MenuItem8: TMenuItem
+      Caption = 'Als Standart speichern'
+      GlyphShowMode = gsmSystem
+      OnClick = MenuItem8Click
+    end
+  end
+end
